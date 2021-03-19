@@ -5,6 +5,7 @@ import (
 	"github.com/BirknerAlex/discovergy_exporter/pkg/discovergy"
 	"github.com/BirknerAlex/discovergy_exporter/pkg/prometheus"
 	"log"
+	"time"
 )
 
 func main() {
@@ -13,6 +14,7 @@ func main() {
 	email := flag.String("email", "", "Discovergy account email")
 	password := flag.String("password", "", "Discovergy account password")
 	listen := flag.String("listen", ":2112", "Listen address")
+	sleep := flag.Int("sleep", 30, "Sleep time between refreshing Discovergy readings")
 
 	flag.Parse()
 
@@ -25,7 +27,7 @@ func main() {
 	}
 
 	go func() {
-		err := discovergy.RunUpdater(*email, *password)
+		err := discovergy.RunUpdater(*email, *password, time.Duration(*sleep)*time.Second)
 		if err != nil {
 			log.Fatalf("Failed to run updater: %v", err)
 		}

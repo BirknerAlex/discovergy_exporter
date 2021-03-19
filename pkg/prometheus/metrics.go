@@ -72,6 +72,36 @@ var VoltagePhase3Gauge = prometheus.NewGaugeVec(
 	},
 )
 
+var AmperePhase1Gauge = prometheus.NewGaugeVec(
+	prometheus.GaugeOpts{
+		Name: "discovergy_ampere_phase1",
+		Help: "Phase 1 ampere in milliampere",
+	},
+	[]string{
+		"meterId",
+	},
+)
+
+var AmperePhase2Gauge = prometheus.NewGaugeVec(
+	prometheus.GaugeOpts{
+		Name: "discovergy_ampere_phase2",
+		Help: "Phase 2 ampere in milliampere",
+	},
+	[]string{
+		"meterId",
+	},
+)
+
+var AmperePhase3Gauge = prometheus.NewGaugeVec(
+	prometheus.GaugeOpts{
+		Name: "discovergy_ampere_phase3",
+		Help: "Phase 3 ampere in milliampere",
+	},
+	[]string{
+		"meterId",
+	},
+)
+
 func init() {
 	prometheus.MustRegister(MilliWattTotalGauge)
 	prometheus.MustRegister(MilliWattPhase1Gauge)
@@ -81,4 +111,8 @@ func init() {
 	prometheus.MustRegister(VoltagePhase1Gauge)
 	prometheus.MustRegister(VoltagePhase2Gauge)
 	prometheus.MustRegister(VoltagePhase3Gauge)
+
+	prometheus.MustRegister(AmperePhase1Gauge)
+	prometheus.MustRegister(AmperePhase2Gauge)
+	prometheus.MustRegister(AmperePhase3Gauge)
 }
