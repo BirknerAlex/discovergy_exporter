@@ -1,5 +1,7 @@
 # Discovergy-Exporter
 
+> Archived since Discovergy has discontinued their B2C business.
+
 This is a prometheus exporter for [Discovergy](https://discovergy.com/) smart meters.
 
 Currently, only supports exporting the current values of all connected meters:
